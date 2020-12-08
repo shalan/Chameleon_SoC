@@ -1,2 +1,3 @@
-# Chameleon_SoC
-AHB-Lite based SoC for IBEX/SWERV/VEXRISC/...
+# Chameleon SoC
+AHB-Lite based SoC for IBEX
+

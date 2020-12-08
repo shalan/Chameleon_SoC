@@ -1,0 +1,37 @@
+../pdk/hd_primitives.v 
+../pdk/hd_functional.v
+
+../rtl/AHB_sys_0/AHBlite_sys_0.v 
+../rtl/AHB_sys_0/AHBlite_bus0.v
+../rtl/AHB_sys_0/AHBlite_GPIO.v
+../rtl/AHB_sys_0/AHBlite_db_reg.v
+
+#-y ../rtl/AHB_sys_0/APB_sys_0/
+../rtl/AHB_sys_0/APB_sys_0/APB_WDT32.v
+../rtl/AHB_sys_0/APB_sys_0/APB_TIMER32.v
+../rtl/AHB_sys_0/APB_sys_0/APB_PWM32.v
+../rtl/AHB_sys_0/APB_sys_0/AHB_2_APB.v
+../rtl/AHB_sys_0/APB_sys_0/APB_bus0.v
+../rtl/AHB_sys_0/APB_sys_0/APB_sys_0.v
+
+#-y ../rtl/IPs
+../rtl/IPs/TIMER32.v
+../rtl/IPs/PWM32.v
+../rtl/IPs/WDT32.v
+../rtl/IPs/spi_master.v
+../rtl/IPs/i2c_master.v
+../rtl/IPs/GPIO.v
+../rtl/IPs/APB_UART.v
+../rtl/IPs/APB_SPI.v
+../rtl/IPs/APB_I2C.v
+../rtl/IPs/DFFRAM.v
+../rtl/IPs/DFFRAMBB.v
+../rtl/IPs/QSPI_XIP_CTRL.v
+../rtl/IPs/AHBSRAM.v
+
+
+N5_SoC_TB.v
+sst26wf080b.v
+../rtl/soc_core.v
+../rtl/NfiVe32.v 
+../rtl/DFFRFile.v 
