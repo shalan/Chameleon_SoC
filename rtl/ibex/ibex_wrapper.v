@@ -14,10 +14,10 @@ module ibex_wrapper
 
     // MISCELLANEOUS 
     input  wire         NMI,				// Non-maskable interrupt input
-    input  wire         IRQ,				// Interrupt request line
-    input  wire [4:0]   IRQ_NUM,			// Interrupt number from the PIC			
-    input  wire 	      SYSTICKCLK,			// SYSTICK clock; ON pulse width is HCLK half period
-    output wire [31:0]	IRQ_MASK
+    input  wire         EXT_IRQ,				// Interrupt request line
+    input wire [14:0]   IRQ, 
+    input  wire [23:0]	SYSTICKCLKDIV
+
 );
   
   wire dpower = 1'b1;
@@ -48,6 +48,28 @@ module ibex_wrapper
   wire data_gnt_i;
   wire data_we_o;
   
+
+  /* SYSTICK */
+  wire div;
+	reg  [23:0]  clkdiv;
+	reg 		systickclk;
+  assign div = (clkdiv == SYSTICKCLKDIV);
+
+  always @(posedge HCLK or negedge HRESETn)
+    if(!HRESETn) clkdiv <= 24'd0;
+		else if(div) 
+				clkdiv <= 24'h0;
+			else
+				clkdiv <= clkdiv + 24'h1; 
+
+  always @(posedge HCLK or negedge HRESETn)
+    if(!HRESETn) systickclk <= 1'b1;
+		else if(div) 
+				systickclk <= 1'b1;
+			else
+				systickclk <= 1'b0;	 
+
+
   ibex_core core (
     // Clock and Reset
     .clk_i(HCLK),
@@ -79,10 +101,10 @@ module ibex_wrapper
 
     // Interrupt inputs
      .irq_software_i(dground),
-     .irq_timer_i(dground),
-     .irq_external_i(dground),
-     .irq_fast_i(dground),
-     .irq_nm_i(dground),       // non-maskeable interrupt
+     .irq_timer_i(systickclk),
+     .irq_external_i(EXT_IRQ),
+     .irq_fast_i(IRQ),
+     .irq_nm_i(NMI),       // non-maskeable interrupt
 
     // Debug Interface
      .debug_req_i(dground),

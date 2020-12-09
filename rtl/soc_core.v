@@ -238,7 +238,12 @@ module soc_core (
 		.HTRANS(M2_HTRANS),
 		.HSIZE(M2_HSIZE),
 		.HWDATA(M2_HWDATA),
-		.HRDATA(M2_HRDATA)
+		.HRDATA(M2_HRDATA),
+
+		.NMI(1'b0),
+		.EXT_IRQ(1'b0),
+		.IRQ({M2_IRQ[27:16], 3'b0}),
+		.SYSTICKCLKDIV(100)
 
 	);
   endmodule
