@@ -29,9 +29,34 @@
 ../rtl/IPs/QSPI_XIP_CTRL.v
 ../rtl/IPs/AHBSRAM.v
 
+../rtl/ibex/ibex_wrapper.v
+../rtl/ibex/ibex_alu.v
+../rtl/ibex/ibex_branch_predict.v
+../rtl/ibex/ibex_compressed_decoder.v
+../rtl/ibex/ibex_controller.v
+../rtl/ibex/ibex_core.v
+../rtl/ibex/ibex_counter.v
+../rtl/ibex/ibex_cs_registers.v
+../rtl/ibex/ibex_csr.v
+../rtl/ibex/ibex_decoder.v
+../rtl/ibex/ibex_dummy_instr.v
+../rtl/ibex/ibex_ex_block.v
+../rtl/ibex/ibex_fetch_fifo.v
+../rtl/ibex/ibex_icache.v
+../rtl/ibex/ibex_id_stage.v
+../rtl/ibex/ibex_if_stage.v
+../rtl/ibex/ibex_load_store_unit.v
+../rtl/ibex/ibex_multdiv_fast.v
+../rtl/ibex/ibex_multdiv_slow.v
+../rtl/ibex/ibex_pmp.v
+../rtl/ibex/ibex_prefetch_buffer.v
+../rtl/ibex/ibex_register_file_latch.v
+../rtl/ibex/ibex_wb_stage.v
+../rtl/ibex/prim_clock_gating.v 
+../rtl/ibex/ibex_register_file_ff.v
 
-N5_SoC_TB.v
+
+Chameleon_SoC_TB.v
 sst26wf080b.v
 ../rtl/soc_core.v
-../rtl/NfiVe32.v 
 ../rtl/DFFRFile.v 

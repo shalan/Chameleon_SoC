@@ -4,7 +4,7 @@
 `define   SIM_TIME    100_000
 `define   SIM_LEVEL   4
 
-module N5_SoC_TB;
+module Chameleon_SoC_TB;
 
     reg HCLK, HRESETn;
 
@@ -138,19 +138,19 @@ module N5_SoC_TB;
 
     // Dump file
     initial begin
-        $dumpfile("N5_SoC_TB.vcd");
-        $dumpvars(`SIM_LEVEL, N5_SoC_TB);
+        $dumpfile("Chameleon_SoC_TB.vcd");
+        $dumpvars(`SIM_LEVEL, Chameleon_SoC_TB);
         #`SIM_TIME;
         $finish;
     end
 
     // Terminate the smulation with ebreak instruction.
     // Calculate the CPI using the CSRs
-    always @ (posedge HCLK) 
-        if(MUV.CPU.N5.instr_ebreak) begin
+    //always @ (posedge HCLK) 
+        //if(MUV.CPU.N5.instr_ebreak) begin
         //$display("CPI=%d.%0d", MUV.N5.CSR_CYCLE/MUV.N5.CSR_INSTRET,(MUV.N5.CSR_CYCLE%MUV.N5.CSR_INSTRET)*10/MUV.N5.CSR_INSTRET );
-        $finish;
-        end
+        //$finish;
+        //end
 
 
     // Monitor Flash memory reads

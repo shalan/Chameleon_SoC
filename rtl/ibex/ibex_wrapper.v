@@ -1,4 +1,4 @@
-module IBEX_wrapper
+module ibex_wrapper
   (
     input  wire         HCLK,							// System clock
     input  wire         HRESETn,						// System Reset, active low
@@ -132,6 +132,8 @@ module IBEX_wrapper
                     (state == S3) ? data_hsize : 3'b0;
 
     assign HWRITE = (state == S3) ? data_we_o : 0 ; 
+
+    assign HWDATA = data_wdata_o;
                     
 
     assign instr_rdata_i = HRDATA;

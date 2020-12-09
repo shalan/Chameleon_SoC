@@ -228,7 +228,7 @@ module soc_core (
 	
 	// Instantiation of NfiVe32
 	//NfiVe32 N5(
-	NfiVe32_SYS CPU (
+	ibex_wrapper ibex_core (
 		.HCLK(HCLK),
 		.HRESETn(HRESETn),
 
@@ -238,16 +238,8 @@ module soc_core (
 		.HTRANS(M2_HTRANS),
 		.HSIZE(M2_HSIZE),
 		.HWDATA(M2_HWDATA),
-		.HRDATA(M2_HRDATA),
+		.HRDATA(M2_HRDATA)
 
-		//NMI
-		.NMI(1'b0),
-
-		//Interrupts
-		.IRQ(M2_IRQ),
-
-		// SYSTICK Divisor
-		.SYSTICKCLKDIV(8'd100)
 	);
   endmodule
   
