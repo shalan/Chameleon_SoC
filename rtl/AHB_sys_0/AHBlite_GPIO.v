@@ -19,6 +19,8 @@
     output wire [31:0] HRDATA,  // Read data
     output wire        HREADYOUT,  // Device ready
     output wire [1:0]   HRESP,
+
+    output wire [15:0] IRQ,
 	
     // IP Interface
 	// WGPIODIN register/fields
@@ -90,6 +92,7 @@
     reg [15:0] WGPIOPU;
     reg [15:0] WGPIOPD;
     reg [15:0] WGPIODIR;
+    reg [15:0] WGPIOIM;
     wire[15:0] WGPIODIN;
 
 	// Register: WGPIODOUT
@@ -136,12 +139,26 @@
             WGPIODIR <= HWDATA;
     end
     
+    // Register: IM
+    wire WGPIOIM_select = wr_enable & (IOADDR[23:2] == 22'h5);
+    
+    always @(posedge HCLK or negedge HRESETn)
+    begin
+        if (~HRESETn)
+            WGPIOIM <= 16'h0;
+        else if (WGPIOIM_select)
+            WGPIOIM <= HWDATA;
+    end
+    
+    assign IRQ = (~WGPIODIR) & WGPIOIM;
+
     assign HRDATA = 
       	(IOADDR[23:2] == 22'h0) ? {16'd0,WGPIODIN} : 
       	(IOADDR[23:2] == 22'h1) ? {16'd0,WGPIODOUT} : 
       	(IOADDR[23:2] == 22'h2) ? {16'd0,WGPIOPU} : 
       	(IOADDR[23:2] == 22'h3) ? {16'd0,WGPIOPD} : 
-      	(IOADDR[23:2] == 22'h4) ? {16'd0,WGPIODIR} : 
+      	(IOADDR[23:2] == 22'h4) ? {16'd0,WGPIODIR} :
+        (IOADDR[23:2] == 22'h5) ? {16'd0,WGPIOIM} : 
 	32'hDEADBEEF;
 	assign HREADYOUT = 1'b1;     // Always ready
 

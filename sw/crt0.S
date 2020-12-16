@@ -1,4 +1,4 @@
-//#define	EXT_MUL
+#define	EXT_MUL
 
 #define r_type_insn(_f7, _rs2, _rs1, _f3, _rd, _opc) \
 .word (((_f7) << 25) | ((_rs2) << 20) | ((_rs1) << 15) | ((_f3) << 12) | ((_rd) << 7) | ((_opc) << 0))
@@ -21,26 +21,61 @@ r_type_insn(0b0000000, _rs2, _rs1, 0b111, _rd, 0b0001011)
 	.org 0
 reset_vector:
 	j		reset_hand
+	
 	.org 4
 nmi_vector:
 	j		nmi_hand
+	
 	.org 8
 tmr_vector:
 	j		tmr_hand
-	.org 12
-	j		.
-	.org	16
+	
+	.org	12
 ecall_vector:
-	j		ecall_hand
-	.org	20
+	j		ecall_hand 
+	
+	.org	16
 ebreak_vector:
 	j		ebreak_hand
+	
 	.org	24
 	j		.
+
 	.org	28
 	j		.
-	.org	64
-	j		irq0_hand
+	
+	.org	64		# IRQ 0
+	j		IRQ
+
+	.org	68		# IRQ 1
+	j		IRQ
+	
+	.org	72
+	j		IRQ
+
+	.org	76
+	j		IRQ
+
+	.org	80
+	j		IRQ
+
+	.org	84
+	j		IRQ
+
+	.org	88
+	j		IRQ
+
+	.org	92		# IRQ 7
+	j		IRQ
+
+	.org	96		# IRQ 8
+	j		IRQ
+
+	.org	100		# IRQ 9
+	j		IRQ
+
+	.org	104		# IRQ 10
+	j		IRQ
 
 	.org 128
 reset_hand:
@@ -69,14 +104,19 @@ tmr_hand:
 ecall_hand:
 ebreak_hand:
 irq0_hand:
-	li t0, 0xBAD00BED
-	mret
+	j IRQ
+	#li t0, 0xBAD00BED
+	#mret
 
 .align 8
 #ifdef EXT_MUL
 .global __mulsi3
 __mulsi3:
-        ext_mul(10, 10, 11)
+        #ext_mul(10, 10, 11)
+		la	t0, 0x49000000
+		sw	a0, 0(t0)
+		sw	a1, 4(t0)
+		lw	a0, 0(t0)
         ret
 #endif
 

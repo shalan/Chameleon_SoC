@@ -236,6 +236,8 @@ module apb_sys_0(
     wire [0: 0] WDOVCLR_S13;
     wire [0: 0] WDEN_S13;
 
+    assign IRQ[31:28] = 4'd0;
+
         //Digital module # 0
         APB_UART S0 (
             .PCLK(PCLK),

@@ -1,8 +1,6 @@
 `timescale 1ns / 1ps
 `default_nettype none
 
-//`define VERIFY
-
 /*
     Hand-crafted 32 lines x 16 bytes Direct Mapped Cache
     It can operate @ 200MHz clock!
@@ -219,78 +217,3 @@ module DMC_32x16HC (
 */
 endmodule
 
-
-`ifdef VERIFY
-module TB_DMC_32x16HC;
-    reg clk;
-    reg rst_n;
-    // 
-    reg [23:0]  A;
-    reg  [23:0]  A_h;
-    wire [31:0]  Do;
-    wire         hit;
-    //
-    reg [127:0]  line;
-    reg          wr;
-
-
-    DMC_32x16HC DUV (
-        .clk(clk),
-        .rst_n(rst_n),
-        // 
-        .A(A),
-        .A_h(A_h),
-        .Do(Do),
-        .hit(hit),
-        //
-        .line(line),
-        .wr(wr)
-);
-
-    always #5 clk = !clk;
-
-    initial begin
-        $dumpfile("TB_DMC_32x16HC.vcd");
-        $dumpvars;
-        # 5000 $finish;
-    end
-
-    initial begin
-        clk = 0;
-        rst_n = 1;
-        A = 0;
-        A_h = 0;
-        line = 128'hF0E0D0C0B0A0980706050403020100;
-        wr = 0;
-
-        #75;
-        @(posedge clk);
-        rst_n = 0;
-        #75;
-        @(posedge clk);
-        rst_n = 1;
-        @(posedge clk);
-        A = 10;
-        A_h = 10;
-
-        //write some line
-        @(posedge clk);
-        wr = 1;
-        @(posedge clk);
-        wr = 0;
-        
-        // read 
-        @(posedge clk);
-        A = 16; 
-        A_h = 16;
-        @(posedge clk);
-        A = 4;
-        @(posedge clk);
-        A = 12;
-        A_h = 12;
-
-    end
-
-endmodule
-
-`endif

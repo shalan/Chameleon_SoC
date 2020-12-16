@@ -1,10 +1,10 @@
 `timescale 1ns/1ns
 
 `define   TEST_FILE   "../sw/test.hex" 
-`define   SIM_TIME    100_000
-`define   SIM_LEVEL   4
+`define   SIM_TIME    800_000
+`define   SIM_LEVEL   0
 
-module Chameleon_SoC_TB;
+module IBEX_SoC_TB;
 
     reg HCLK, HRESETn;
 
@@ -52,6 +52,10 @@ module Chameleon_SoC_TB;
     wire [0: 0] sda_o_Sys0_SS0_S5;
     wire [0: 0] sda_oen_o_Sys0_SS0_S5;
 
+    wire [0: 0] pwm_Sys0_SS0_S6;
+	wire [0: 0] pwm_Sys0_SS0_S7;
+
+    /* Program Flash */
     assign fdio = fdoe ? fdo : 4'bzzzz;
     assign fdi = fdio;
 
@@ -65,9 +69,9 @@ module Chameleon_SoC_TB;
         .HCLK(HCLK),
         .HRESETn(HRESETn),
 
-        //input [7: 0] Input_DATA,
-        //input [0: 0] Input_irq,
-        //output Output_DATA,
+        .SYSTICKCLKDIV(8'd100),
+        .NMI(1'b0),
+       
         .fdi_Sys0_S0(fdi),
         .fdo_Sys0_S0(fdo),
         .fdoe_Sys0_S0(fdoe),
@@ -82,12 +86,10 @@ module Chameleon_SoC_TB;
    		
         .RsRx_Sys0_SS0_S0(RsRx_Sys0_SS0_S0),
         .RsTx_Sys0_SS0_S0(RsTx_Sys0_SS0_S0),
-        //output wire [0: 0] uart_irq_Sys0_SS0_S0,
 
         .RsRx_Sys0_SS0_S1(RsRx_Sys0_SS0_S1),
         .RsTx_Sys0_SS0_S1(RsTx_Sys0_SS0_S1),
-        //output wire [0: 0] uart_irq_Sys0_SS0_S1,
-      
+       
         .MSI_Sys0_SS0_S2(MSI_Sys0_SS0_S2),
         .MSO_Sys0_SS0_S2(MSO_Sys0_SS0_S2),
         .SSn_Sys0_SS0_S2(SSn_Sys0_SS0_S2),
@@ -110,14 +112,39 @@ module Chameleon_SoC_TB;
         .scl_oen_o_Sys0_SS0_S5(scl_oen_o_Sys0_SS0_S5),
         .sda_i_Sys0_SS0_S5(sda_i_Sys0_SS0_S5),
         .sda_o_Sys0_SS0_S5(sda_o_Sys0_SS0_S5),
-        .sda_oen_o_Sys0_SS0_S5(sda_oen_o_Sys0_SS0_S5)
-/*
-        output wire [0: 0] pwm_Sys0_SS0_S6,
-        output wire [0: 0] pwm_Sys0_SS0_S7 */
-        //.db_reg_Sys0(db_reg_Sys0)
+        .sda_oen_o_Sys0_SS0_S5(sda_oen_o_Sys0_SS0_S5),
+
+        .pwm_Sys0_SS0_S6(pwm_Sys0_SS0_S6),
+	    .pwm_Sys0_SS0_S7(pwm_Sys0_SS0_S7)
+
     );
 
-// Load the application into the flash memory
+    // GPIO Loopback!
+    wire [15:0] GPIO_PINS;
+    generate
+        genvar i;
+        for(i=0; i<16; i=i+1)
+            assign GPIO_PINS[i] = GPIOOEN_Sys0_S2[i] ? GPIOOUT_Sys0_S2[i] : 1'bz;
+    endgenerate
+    assign GPIO_PINS[15:8] = GPIO_PINS[7:0];
+    assign GPIOIN_Sys0_S2 = GPIO_PINS;
+
+
+    // Serial Terminal connected to UART0 TX*/
+    terminal term(.rx(RsTx_Sys0_SS0_S0));
+
+    // SPI SRAM connected to SPI0
+    wire SPI_HOLD = 1'b1;
+    M23LC512 SPI_SRAM(
+        .RESET(~HRESETn),
+        .SO_SIO1(MSI_Sys0_SS0_S2),
+        .SI_SIO0(MSO_Sys0_SS0_S2),
+        .CS_N(SSn_Sys0_SS0_S2),
+        .SCK(SCLK_Sys0_SS0_S2),
+        .HOLD_N_SIO3(SPI_HOLD)
+	);
+
+    // Load the application into the flash memory
     initial begin
         #1  $readmemh(`TEST_FILE, flash.I0.memory);
     end
@@ -138,20 +165,21 @@ module Chameleon_SoC_TB;
 
     // Dump file
     initial begin
-        $dumpfile("Chameleon_SoC_TB.vcd");
-        $dumpvars(`SIM_LEVEL, Chameleon_SoC_TB);
+        $dumpfile("IBEX_SoC_TB.vcd");
+        $dumpvars(`SIM_LEVEL, IBEX_SoC_TB);
         #`SIM_TIME;
         $finish;
     end
 
     // Terminate the smulation with ebreak instruction.
     // Calculate the CPI using the CSRs
-    //always @ (posedge HCLK) 
-        //if(MUV.CPU.N5.instr_ebreak) begin
+    /*
+    always @ (posedge HCLK) 
+        if(MUV.CPU.N5.instr_ebreak) begin
         //$display("CPI=%d.%0d", MUV.N5.CSR_CYCLE/MUV.N5.CSR_INSTRET,(MUV.N5.CSR_CYCLE%MUV.N5.CSR_INSTRET)*10/MUV.N5.CSR_INSTRET );
-        //$finish;
-        //end
-
+        $finish;
+        end
+    */
 
     // Monitor Flash memory reads
     //always @(posedge HCLK)
@@ -159,7 +187,7 @@ module Chameleon_SoC_TB;
     //    $display("Flash Read A:%X (%0t)", HADDR, $time);
 
 
-    terminal term(.rx(RsTx_Sys0_SS0_S0));
+    
 endmodule
 
 module terminal #(parameter bit_time = 160) (input rx);

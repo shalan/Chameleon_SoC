@@ -7,10 +7,10 @@ MEMORY
         LENGTH = 1M
     SRAM (rwx) :
         ORIGIN = 0x20000000,
-        LENGTH = 64K
+        LENGTH = 12K
     stack (rw):
-        ORIGIN = 0x20000000 + 48K
-        LENGTH = 16K
+        ORIGIN = 0x20000000 + 8K
+        LENGTH = 4K
 }
 
 PROVIDE(_fstack = ORIGIN(stack) + LENGTH(stack) - 4);
