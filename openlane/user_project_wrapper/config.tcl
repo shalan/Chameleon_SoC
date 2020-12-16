@@ -37,8 +37,10 @@ set ::env(CLOCK_NET) "wb_clk_i"
 
 set ::env(CLOCK_PERIOD) "10"
 
-set ::env(PL_OPENPHYSYN_OPTIMIZATIONS) 0
-set ::env(DIODE_INSERTION_STRATEGY) 0
+set ::env(ROUTING_CORES)    8
+
+set ::env(PL_OPENPHYSYN_OPTIMIZATIONS) 1
+set ::env(DIODE_INSERTION_STRATEGY) 3
 
 set ::env(PL_TARGET_DENSITY) 0.4
 
@@ -68,14 +70,15 @@ set ::env(VERILOG_FILES) "\
     $script_dir/../../rtl/NfiVe32.v
     $script_dir/../../rtl/DFFRFile.v
 	$script_dir/../../rtl/soc_core.v
+    $script_dir/../../rtl/ibex/*.v
     $script_dir/../../rtl/user_project_wrapper.v"
 
 set ::env(VERILOG_FILES_BLACKBOX) "\
 	$script_dir/../../rtl/IPs/DFFRAM.v
-	$script_dir/../../rtl/IPs/RAM_4Kx32.v"
+	$script_dir/../../rtl/IPs/RAM_3Kx32.v"
 
 set ::env(EXTRA_LEFS) "\
-	$script_dir/../../lef/RAM_4Kx32.lef"
+	$script_dir/../../lef/RAM_3Kx32.lef"
 
-# set ::env(EXTRA_GDS_FILES) "\
-# 	$script_dir/../../gds/RAM_5Kx32.gds"
+set ::env(EXTRA_GDS_FILES) "\
+ 	$script_dir/../../gds/RAM_3Kx32.gds"
