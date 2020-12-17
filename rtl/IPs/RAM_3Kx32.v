@@ -17,8 +17,9 @@ module RAM_3Kx32 (
     input   [11:0]   A;
 
     localparam BLOCKS=3;
-    wire  [BLOCKS-1:0]       _EN_ ;
+    wire  [3:0]       _EN_ ;
     wire [31:0] _Do_ [BLOCKS-1:0];
+    wire [31:0] Do_pre;
 
     generate 
         genvar gi;
@@ -40,15 +41,9 @@ module RAM_3Kx32 (
         
     endgenerate 
     
-    // The block decoder
-    assign _EN_[0] = A[11:10] == 2'd0;
-    assign _EN_[1] = A[11:10] == 2'd1;
-    assign _EN_[2] = A[11:10] == 2'd2;
-    //assign _EN_[3] = A[11:10] == 2'd3;
-    
-    // Output Data multiplexor
-    assign Do = (A[11:10] == 2'd0) ? _Do_[0] : 
-                (A[11:10] == 2'd1) ? _Do_[1] : 
-                (A[11:10] == 2'd2) ? _Do_[2] :32'b0;
+    MUX4x1_32 MUX ( .A0(_Do_[0]), .A1(_Do_[1]), .A2(_Do_[2]), .A3(32'b0), .S(A[11:10]), .X(Do_pre) );
+    DEC2x4 DEC ( .EN(EN), .A(A[11:10]), .SEL(_EN_) );
+
+    sky130_fd_sc_hd__clkbuf_4 DOBUF[31:0] (.X(Do), .A(Do_pre));
     
 endmodule

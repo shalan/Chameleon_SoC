@@ -29,8 +29,8 @@ place_io_ol
 
 apply_def_template
 
-set margin_x 200
-set margin_y 800
+set margin_x 350
+set margin_y 150
 
 add_macro_placement core.RAM  $margin_x $margin_y N
 
