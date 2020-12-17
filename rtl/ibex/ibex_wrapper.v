@@ -128,7 +128,8 @@ module ibex_wrapper
     if(!HRESETn) state <= S0;
     else state <= nstate;
 
-  always @*
+  always @* begin
+      nstate = S0;
     case (state)
       S0  : if(data_req_o) nstate = S3; else if(instr_req_o) nstate = S1; else nstate = S0;
       S1  : nstate = S2;
@@ -136,6 +137,7 @@ module ibex_wrapper
       S3  : nstate = S4;
       S4  : if(data_rvalid_i) nstate = S0; else nstate = S4;
     endcase
+  end
 
     assign instr_gnt_i = (state == S1);
     assign instr_rvalid_i = (state == S2) ? HREADY : 0;
