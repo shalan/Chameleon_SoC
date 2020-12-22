@@ -2,7 +2,8 @@
 `default_nettype none
 
 // uncomment the following line to use the optimized cache (SKY130A only)
-//`define HC_CACHE
+
+`define HC_CACHE
 
 /*
     AHB-Lite Quad I/O flash reader with 32x16 DM$
@@ -336,7 +337,7 @@ endmodule
     32 lines x 16 bytes Direct Mapped Cache
 */
 `ifdef HC_CACHE
-`include "../rtl/IPs/DMC_32x16HC.v"
+//`include "../rtl/IPs/DMC_32x16HC.v"
 `else
 module DMC_32x16 (
     input wire          clk,
