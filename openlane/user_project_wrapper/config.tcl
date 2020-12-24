@@ -92,3 +92,4 @@ set ::env(EXTRA_GDS_FILES) "\
 set ::env(DIODE_INSERTION_STRATEGY) "4"
 
 set ::env(GLB_RT_ADJUSTMENT) 0.35
+set ::env(GLB_RT_MAXLAYER) 5
