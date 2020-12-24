@@ -30,8 +30,16 @@ global_placement_or
 set margin_x 200
 set margin_y 150
 
-add_macro_placement core.RAM  $margin_x $margin_y N
-add_macro_placement core.ahb_sys_0_uut.S0.CACHE 2000 2400 N
+add_macro_placement _5520_ 200 150 N
+add_macro_placement _5521_ 1600 150 N
+add_macro_placement _5522_  200 1950 S
+
+add_macro_placement core.ahb_sys_0_uut.S0.CACHE 2100 2650 W
+# CPU
+add_macro_placement core.ibex_core  2150 1700 N
+# APB
+add_macro_placement core.ahb_sys_0_uut.apb_sys_inst_0  1450 2650 N
+
 manual_macro_placement f
 
 tap_decap_or
