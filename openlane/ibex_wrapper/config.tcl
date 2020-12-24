@@ -43,7 +43,7 @@ set ::env(MAGIC_WRITE_FULL_LEF) 0
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 
 set ::env(VERILOG_FILES) "\
-    $script_dir/../../rtl/ibex/*.v"
+    $script_dir/../../verilog/rtl/ibex/*.v"
 
 set ::env(GLB_RT_MAXLAYER) 5
 set ::env(GLB_RT_ADJUSTMENT) 0.25
