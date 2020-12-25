@@ -30,9 +30,9 @@ global_placement_or
 set margin_x 200
 set margin_y 150
 
-add_macro_placement _5520_ 200 150 N
-add_macro_placement _5521_ 1600 150 N
-add_macro_placement _5522_  200 1950 S
+add_macro_placement _5516_ 200 150 N
+add_macro_placement _5517_ 1600 150 N
+add_macro_placement _5518_  200 1950 S
 
 add_macro_placement core.ahb_sys_0_uut.S0.CACHE 2100 2650 W
 # CPU
