@@ -71,6 +71,7 @@ module IBEX_SoC_TB;
 
         .SYSTICKCLKDIV(8'd100),
         .NMI(1'b0),
+        .EXT_IRQ(1'b0),
        
         .fdi_Sys0_S0(fdi),
         .fdo_Sys0_S0(fdo),

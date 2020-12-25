@@ -94,7 +94,8 @@ module user_project_wrapper (
         .HCLK(wb_clk_i), 
 	    .HRESETn(wb_rst_i),
 	    
-        .NMI(1'b0),
+        .NMI(la_data_in[24]),
+        .EXT_IRQ(la_data_in[25]),
 	    .SYSTICKCLKDIV(la_data_in[23:0]),
 
         .GPIOIN_Sys0_S2(io_in[13:0]),

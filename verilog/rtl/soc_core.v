@@ -8,6 +8,7 @@ module soc_core (
 	input HRESETn,
 	
 	input wire 			NMI,
+	input wire 			EXT_IRQ,
 	input wire [23:0]	SYSTICKCLKDIV,
 
 	input wire [3: 0] 	fdi_Sys0_S0,
@@ -228,7 +229,7 @@ module soc_core (
 		.HRDATA(M2_HRDATA),
 
 		.NMI(NMI),
-		.EXT_IRQ(1'b0),
+		.EXT_IRQ(EXT_IRQ),
 		.IRQ({M2_IRQ[27:16], 3'b0}),
 		.SYSTICKCLKDIV(SYSTICKCLKDIV)
 
