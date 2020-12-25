@@ -40,6 +40,8 @@ set ::env(CLOCK_PERIOD) "10"
 set ::env(ROUTING_CORES) 16
 
 set ::env(PL_OPENPHYSYN_OPTIMIZATIONS) 1
+set ::env(PSN_ENABLE_PIN_SWAP) 0
+
 set ::env(DIODE_INSERTION_STRATEGY) 4
 
 set ::env(SYNTH_STRATEGY) 3
@@ -50,6 +52,9 @@ set ::env(PL_TARGET_DENSITY) 0.185
 # for a sense of "isolation"
 set ::env(MAGIC_ZEROIZE_ORIGIN) 0
 set ::env(MAGIC_WRITE_FULL_LEF) 0
+
+set ::env(MAGIC_GENERATE_LEF) 0
+
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 
 set ::env(VERILOG_FILES) "\
