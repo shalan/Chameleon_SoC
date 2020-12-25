@@ -92,7 +92,7 @@ module user_project_wrapper (
     soc_core core(
 
         .HCLK(wb_clk_i), 
-	    .HRESETn(wb_rst_i),
+	    .HRESETn(~wb_rst_i),
 	    
         .NMI(la_data_in[24]),
         .EXT_IRQ(la_data_in[25]),
