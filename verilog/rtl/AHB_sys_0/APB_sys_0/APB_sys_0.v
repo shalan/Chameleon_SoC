@@ -49,7 +49,7 @@ module apb_sys_0(
 	output wire [0: 0] pwm_S6,
 	output wire [0: 0] pwm_S7,
 
-    output [31:16] IRQ
+    output [15:0] IRQ
 );
     
     // APB Master Signals
@@ -236,7 +236,7 @@ module apb_sys_0(
     wire [0: 0] WDOVCLR_S13;
     wire [0: 0] WDEN_S13;
 
-    assign IRQ[31:28] = 4'd0;
+    assign IRQ[15:12] = 4'd0;
 
         //Digital module # 0
         APB_UART S0 (
@@ -252,7 +252,7 @@ module apb_sys_0(
 
             .RsRx(RsRx_S0),   
             .RsTx(RsTx_S0),   
-            .uart_irq(IRQ[16])
+            .uart_irq(IRQ[0])
         );
 
         //Digital module # 1
@@ -269,7 +269,7 @@ module apb_sys_0(
 
             .RsRx(RsRx_S1),   
             .RsTx(RsTx_S1),   
-            .uart_irq(IRQ[17])
+            .uart_irq(IRQ[1])
         );
 
         //Digital module # 2
@@ -289,7 +289,7 @@ module apb_sys_0(
             .SSn(SSn_S2),   
             .SCLK(SCLK_S2),
 
-            .IRQ(IRQ[18])
+            .IRQ(IRQ[2])
         );
 
         //Digital module # 3
@@ -309,7 +309,7 @@ module apb_sys_0(
             .SSn(SSn_S3),   
             .SCLK(SCLK_S3),
 
-            .IRQ(IRQ[19])
+            .IRQ(IRQ[3])
         );
 
         //Digital module # 4
@@ -331,7 +331,7 @@ module apb_sys_0(
             .sda_o(sda_o_S4),   
             .sda_oen_o(sda_oen_o_S4),
 
-            .IRQ(IRQ[20])
+            .IRQ(IRQ[4])
         );
 
         //Digital module # 5
@@ -353,7 +353,7 @@ module apb_sys_0(
             .sda_o(sda_o_S5),   
             .sda_oen_o(sda_oen_o_S5),
 
-            .IRQ(IRQ[21])
+            .IRQ(IRQ[5])
         );
 
         //Digital module # 6
@@ -450,7 +450,7 @@ module apb_sys_0(
             .TMROVCLR(TMROVCLR_S8),
             .TMREN(TMREN_S8),
 
-            .IRQ(IRQ[22]),
+            .IRQ(IRQ[6]),
             .PRDATA(PRDATA_S8)
         );
 
@@ -486,7 +486,7 @@ module apb_sys_0(
             .TMROVCLR(TMROVCLR_S9),
             .TMREN(TMREN_S9),
 
-            .IRQ(IRQ[23]),
+            .IRQ(IRQ[7]),
             .PRDATA(PRDATA_S9)
         );
 
@@ -521,7 +521,7 @@ module apb_sys_0(
             .TMROVCLR(TMROVCLR_S10),
             .TMREN(TMREN_S10),
 
-            .IRQ(IRQ[24]),
+            .IRQ(IRQ[8]),
             .PRDATA(PRDATA_S10)
         );
 
@@ -556,7 +556,7 @@ module apb_sys_0(
             .TMROV(TMROV_S11),
             .TMROVCLR(TMROVCLR_S11),
             .TMREN(TMREN_S11),
-            .IRQ(IRQ[25]),
+            .IRQ(IRQ[9]),
             .PRDATA(PRDATA_S11)
         );
 
@@ -589,7 +589,7 @@ module apb_sys_0(
             .WDOV(WDOV_S12),
             .WDOVCLR(WDOVCLR_S12),
             .WDEN(WDEN_S12),
-            .IRQ(IRQ[26]),
+            .IRQ(IRQ[10]),
             .PRDATA(PRDATA_S12)
         );
 
@@ -623,7 +623,7 @@ module apb_sys_0(
             .WDOVCLR(WDOVCLR_S13),
             .WDEN(WDEN_S13),
 
-            .IRQ(IRQ[27]),
+            .IRQ(IRQ[11]),
             .PRDATA(PRDATA_S13)
         );
 
