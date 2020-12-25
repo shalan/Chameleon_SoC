@@ -230,7 +230,7 @@ module soc_core (
 
 		.NMI(NMI),
 		.EXT_IRQ(EXT_IRQ),
-		.IRQ({M2_IRQ[27:16], 3'b0}),
+		.IRQ({M2_IRQ[27:16], 4'b0}),
 		.SYSTICKCLKDIV(SYSTICKCLKDIV)
 
 	);
