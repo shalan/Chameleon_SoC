@@ -23,7 +23,7 @@ set ::env(CLOCK_TREE_SYNTH) 			0
 set ::env(FP_PIN_ORDER_CFG) 			$::env(DESIGN_DIR)/pin_order.cfg
 
 set ::env(FP_SIZING) 					absolute
-set ::env(DIE_AREA) 					"0 0 600 400"
+set ::env(DIE_AREA) 					"0 0 400 600"
 set ::env(GLB_RT_OBS) 					"met5 $::env(DIE_AREA)"
 
 set ::env(PDN_CFG) 						$script_dir/pdn.tcl

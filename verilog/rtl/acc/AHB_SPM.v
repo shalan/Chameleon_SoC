@@ -89,7 +89,7 @@ module AHB_SPM #(parameter SIZE=32) (
 
     reg [7:0]   AHB_ADDR;    
     wire        ahb_access   = HTRANS[1] & HSEL & HREADY;
-    wire        ahb_write    = ahb_access &  HWRITE;
+    wire        _ahb_write_    = ahb_access &  HWRITE;
     wire        ahb_read     = ahb_access & (~HWRITE);
     reg         AHB_WRITE;
     reg         AHB_READ;
@@ -107,7 +107,7 @@ module AHB_SPM #(parameter SIZE=32) (
         AHB_ADDR    <=  8'b0;
     end
     else begin
-        AHB_WRITE   <=  ahb_write;
+        AHB_WRITE   <=  _ahb_write_;
         AHB_READ    <=  ahb_read;
         AHB_ADDR    <=  HADDR[7:0];  
     end
