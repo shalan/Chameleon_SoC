@@ -1,11 +1,11 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1608829728
+timestamp 1608932540
 << obsli1 >>
 rect 722 2159 88737 137649
 << obsm1 >>
-rect 0 2048 89212 137680
+rect 0 1844 89212 137680
 << metal2 >>
 rect 1292 139200 1348 140000
 rect 4696 139200 4752 140000
@@ -331,12 +331,12 @@ rect 49906 2128 50226 137680
 rect 65266 2128 65586 137680
 rect 80626 2128 80946 137680
 << obsm4 >>
-rect 4277 2483 19106 136917
-rect 19586 2483 34466 136917
-rect 34946 2483 49826 136917
-rect 50306 2483 65186 136917
-rect 65666 2483 80546 136917
-rect 81026 2483 87695 136917
+rect 4277 2483 19106 136101
+rect 19586 2483 34466 136101
+rect 34946 2483 49826 136101
+rect 50306 2483 65186 136101
+rect 65666 2483 80546 136101
+rect 81026 2483 87695 136101
 << labels >>
 rlabel metal2 s 4 0 60 800 6 HADDR[0]
 port 1 nsew signal input
@@ -546,37 +546,37 @@ rlabel metal2 s 64312 0 64368 800 6 HWDATA[9]
 port 103 nsew signal input
 rlabel metal2 s 86392 0 86448 800 6 HWRITE
 port 104 nsew signal input
-rlabel metal3 s 88818 19320 89618 19440 6 IRQ[16]
+rlabel metal3 s 88818 19320 89618 19440 6 IRQ[0]
 port 105 nsew signal output
-rlabel metal3 s 88818 27072 89618 27192 6 IRQ[17]
+rlabel metal3 s 88818 97112 89618 97232 6 IRQ[10]
 port 106 nsew signal output
-rlabel metal3 s 88818 34824 89618 34944 6 IRQ[18]
+rlabel metal3 s 88818 104864 89618 104984 6 IRQ[11]
 port 107 nsew signal output
-rlabel metal3 s 88818 42576 89618 42696 6 IRQ[19]
+rlabel metal3 s 88818 112616 89618 112736 6 IRQ[12]
 port 108 nsew signal output
-rlabel metal3 s 88818 50464 89618 50584 6 IRQ[20]
+rlabel metal3 s 88818 120368 89618 120488 6 IRQ[13]
 port 109 nsew signal output
-rlabel metal3 s 88818 58216 89618 58336 6 IRQ[21]
+rlabel metal3 s 88818 128120 89618 128240 6 IRQ[14]
 port 110 nsew signal output
-rlabel metal3 s 88818 65968 89618 66088 6 IRQ[22]
+rlabel metal3 s 88818 135872 89618 135992 6 IRQ[15]
 port 111 nsew signal output
-rlabel metal3 s 88818 73720 89618 73840 6 IRQ[23]
+rlabel metal3 s 88818 27072 89618 27192 6 IRQ[1]
 port 112 nsew signal output
-rlabel metal3 s 88818 81472 89618 81592 6 IRQ[24]
+rlabel metal3 s 88818 34824 89618 34944 6 IRQ[2]
 port 113 nsew signal output
-rlabel metal3 s 88818 89224 89618 89344 6 IRQ[25]
+rlabel metal3 s 88818 42576 89618 42696 6 IRQ[3]
 port 114 nsew signal output
-rlabel metal3 s 88818 97112 89618 97232 6 IRQ[26]
+rlabel metal3 s 88818 50464 89618 50584 6 IRQ[4]
 port 115 nsew signal output
-rlabel metal3 s 88818 104864 89618 104984 6 IRQ[27]
+rlabel metal3 s 88818 58216 89618 58336 6 IRQ[5]
 port 116 nsew signal output
-rlabel metal3 s 88818 112616 89618 112736 6 IRQ[28]
+rlabel metal3 s 88818 65968 89618 66088 6 IRQ[6]
 port 117 nsew signal output
-rlabel metal3 s 88818 120368 89618 120488 6 IRQ[29]
+rlabel metal3 s 88818 73720 89618 73840 6 IRQ[7]
 port 118 nsew signal output
-rlabel metal3 s 88818 128120 89618 128240 6 IRQ[30]
+rlabel metal3 s 88818 81472 89618 81592 6 IRQ[8]
 port 119 nsew signal output
-rlabel metal3 s 88818 135872 89618 135992 6 IRQ[31]
+rlabel metal3 s 88818 89224 89618 89344 6 IRQ[9]
 port 120 nsew signal output
 rlabel metal2 s 15092 139200 15148 140000 6 MSI_S2
 port 121 nsew signal input
