@@ -4,6 +4,10 @@
 //`define		USE_DFFRAM_BEH
 
 module soc_core (
+`ifdef USE_POWER_PINS
+	input VPWR,
+	input VGND,
+`endif
 	input HCLK, 
 	input HRESETn,
 	

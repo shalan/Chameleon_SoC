@@ -67,14 +67,46 @@ module DEC1x2 (
 endmodule
 
 module DEC2x4 (
+`ifdef USE_POWER_PINS
+    input VPWR,
+    input VGND,
+`endif
     input           EN,
     input   [1:0]   A,
     output  [3:0]   SEL
 );
-    sky130_fd_sc_hd__nor3b_4    AND0 ( .Y(SEL[0]), .A(A[0]),   .B(A[1]), .C_N(EN) );
-    sky130_fd_sc_hd__and3b_4    AND1 ( .X(SEL[1]), .A_N(A[1]), .B(A[0]), .C(EN) );
-    sky130_fd_sc_hd__and3b_4    AND2 ( .X(SEL[2]), .A_N(A[0]), .B(A[1]), .C(EN) );
-    sky130_fd_sc_hd__and3_4     AND3 ( .X(SEL[3]), .A(A[1]),   .B(A[0]), .C(EN) );
+    sky130_fd_sc_hd__nor3b_4    AND0 ( 
+    `ifdef USE_POWER_PINS
+        .VPWR(VPWR),
+        .VGND(VGND),
+        .VPB(VPWR),
+        .VNB(VGND),
+    `endif
+        .Y(SEL[0]), .A(A[0]),   .B(A[1]), .C_N(EN) );
+    sky130_fd_sc_hd__and3b_4    AND1 ( 
+    `ifdef USE_POWER_PINS
+        .VPWR(VPWR),
+        .VGND(VGND),
+        .VPB(VPWR),
+        .VNB(VGND),
+    `endif
+        .X(SEL[1]), .A_N(A[1]), .B(A[0]), .C(EN) );
+    sky130_fd_sc_hd__and3b_4    AND2 ( 
+    `ifdef USE_POWER_PINS
+        .VPWR(VPWR),
+        .VGND(VGND),
+        .VPB(VPWR),
+        .VNB(VGND),
+    `endif
+        .X(SEL[2]), .A_N(A[0]), .B(A[1]), .C(EN) );
+    sky130_fd_sc_hd__and3_4     AND3 ( 
+    `ifdef USE_POWER_PINS
+        .VPWR(VPWR),
+        .VGND(VGND),
+        .VPB(VPWR),
+        .VNB(VGND),
+    `endif
+        .X(SEL[3]), .A(A[1]),   .B(A[0]), .C(EN) );
     
 endmodule
 
@@ -123,12 +155,24 @@ module MUX2x1_32(
 endmodule
 
 module MUX4x1_32(
+`ifdef USE_POWER_PINS
+    input VPWR,
+    input VGND,
+`endif
     input   [31:0]      A0, A1, A2, A3,
     input   [1:0]       S,
     output  [31:0]      X
 );
-    sky130_fd_sc_hd__mux4_1 MUX[31:0] (.A0(A0), .A1(A1), .A2(A2), .A3(A3), .S0(S[0]), .S1(S[1]), .X(X) );
+    sky130_fd_sc_hd__mux4_1 MUX[31:0] (
+    `ifdef USE_POWER_PINS
+        .VPWR(VPWR),
+        .VGND(VGND),
+        .VPB(VPWR),
+        .VNB(VGND),
+    `endif
+        .A0(A0), .A1(A1), .A2(A2), .A3(A3), .S0(S[0]), .S1(S[1]), .X(X) );
 endmodule
+
 
 module PASS (input [31:0] A, output [31:0] X);
     assign X = A;
