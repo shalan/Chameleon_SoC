@@ -1,4 +1,4 @@
-CARAVEL_ROOT?=/home/ma/Documents/caravel
+CARAVEL_ROOT?=/home/cse-p07-2179-gaa/work/Caravel_Chameleon_SoC
 
 migrate:
 	# Verilog Views
@@ -12,7 +12,8 @@ migrate:
 	yes | cp -r verilog/rtl/IPs $(CARAVEL_ROOT)/verilog/rtl/user_project
 	yes | cp -r verilog/rtl/acc $(CARAVEL_ROOT)/verilog/rtl/user_project
 	yes | cp -r verilog/rtl/AHB_sys_0 $(CARAVEL_ROOT)/verilog/rtl/user_project
-
+	yes | cp -r verilog/rtl/ibex $(CARAVEL_ROOT)/verilog/rtl/user_project
+	
 	# Physical views
 	yes | cp -a def/user_project_wrapper.def $(CARAVEL_ROOT)/def/
 	yes | cp -a lef/user_project_wrapper.lef $(CARAVEL_ROOT)/lef/
