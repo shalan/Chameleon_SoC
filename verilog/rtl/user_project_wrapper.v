@@ -95,7 +95,7 @@ module user_project_wrapper (
         .VGND(vssd1),
     `endif
         .HCLK(wb_clk_i), 
-	    .HRESETn(la_data_in[9]),
+	    .HRESETn(la_data_in[26]),
 	    
         .NMI(la_data_in[24]),
         .EXT_IRQ(la_data_in[25]),
