@@ -38,7 +38,7 @@ module RAM_3Kx32 (
 `ifdef NO_DFFRAM
 	DFFRAM_beh 
 `else
-	DFFRAM
+	DFFRAM_4K
 `endif
             #(.COLS(4)) RAM (
                 .CLK(CLK),
