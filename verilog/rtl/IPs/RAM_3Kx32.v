@@ -41,6 +41,10 @@ module RAM_3Kx32 (
 	DFFRAM_4K
 `endif
             #(.COLS(4)) RAM (
+            `ifdef USE_POWER_PINS
+		.VPWR(VPWR),
+		.VGND(VGND),
+	     `endif
                 .CLK(CLK),
                 .WE(WE),
                 .EN(_EN_[gi]),

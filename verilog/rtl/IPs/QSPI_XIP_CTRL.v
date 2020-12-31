@@ -9,6 +9,10 @@
     Intended to be used to execute from an external Quad I/O SPI Flash Memory
 */
 module QSPI_XIP_CTRL(
+`ifdef USE_POWER_PINS
+	input VPWR,
+	input VGND,
+`endif
     // AHB-Lite Slave Interface
     input               HCLK,
     input               HRESETn,
@@ -105,7 +109,12 @@ module QSPI_XIP_CTRL(
 `else
     DMC_32x16HC
 `endif
-                CACHE ( .clk(HCLK), .rst_n(HRESETn), 
+                CACHE ( 
+                `ifdef USE_POWER_PINS
+			.VPWR(VPWR),
+			.VGND(VGND),
+	        `endif
+                	 .clk(HCLK), .rst_n(HRESETn), 
                         .A(last_HADDR[23:0]), .A_h(HADDR[23:0]), .Do(c_datao), .hit(c_hit), 
                         .line(c_line), .wr(c_wr[1]) );
     
