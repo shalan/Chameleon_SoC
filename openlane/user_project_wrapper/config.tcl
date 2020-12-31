@@ -78,20 +78,20 @@ set ::env(VERILOG_FILES) "\
 
 set ::env(VERILOG_FILES_BLACKBOX) "\
     $script_dir/../../verilog/rtl/ibex/*.v
-	$script_dir/../../verilog/rtl/IPs/DFFRAM.v
+	$script_dir/../../verilog/rtl/IPs/DFFRAM_4K.v
     $script_dir/../../verilog/rtl/AHB_sys_0/APB_sys_0/*.v
     $script_dir/../../verilog/rtl/IPs/DMC_32x16HC.v"
 
 set ::env(EXTRA_LEFS) "\
 	$script_dir/../../lef/apb_sys_0.lef
 	$script_dir/../../lef/ibex_wrapper.lef
-	$script_dir/../../lef/DFFRAM.lef
+	$script_dir/../../lef/DFFRAM_4K.lef
     $script_dir/../../lef/DMC_32x16HC.lef"
 
 set ::env(EXTRA_GDS_FILES) "\
 	$script_dir/../../gds/apb_sys_0.gds
 	$script_dir/../../gds/ibex_wrapper.gds
- 	$script_dir/../../gds/DFFRAM.gds
+ 	$script_dir/../../gds/DFFRAM_4K.gds
  	$script_dir/../../gds/DMC_32x16HC.gds"
  	
 set ::env(DIODE_INSERTION_STRATEGY) "4"

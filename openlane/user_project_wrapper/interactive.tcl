@@ -38,7 +38,7 @@ add_macro_placement core.ahb_sys_0_uut.S0.CACHE 2100 2650 N
 # CPU
 add_macro_placement core.ibex_core  2150 1700 N
 # APB
-add_macro_placement core.ahb_sys_0_uut.apb_sys_inst_0  1480 2650 N
+add_macro_placement core.ahb_sys_0_uut.apb_sys_inst_0  1470 2643 N
 
 manual_macro_placement f
 
