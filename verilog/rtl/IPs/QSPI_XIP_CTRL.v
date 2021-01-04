@@ -110,7 +110,7 @@ module QSPI_XIP_CTRL(
     DMC_32x16HC
 `endif
                 CACHE ( 
-                `ifdef USE_POWER_PINS
+               `ifdef USE_POWER_PINS
 			.VPWR(VPWR),
 			.VGND(VGND),
 	        `endif

@@ -8,7 +8,7 @@ module ibex_csr (
 );
 	parameter [31:0] Width = 32;
 	parameter [0:0] ShadowCopy = 1'b0;
-	parameter [Width - 1:0] ResetValue = 1'sb0;
+	parameter [Width - 1:0] ResetValue = {Width {1'sb0}};
 	input wire clk_i;
 	input wire rst_ni;
 	input wire [Width - 1:0] wr_data_i;

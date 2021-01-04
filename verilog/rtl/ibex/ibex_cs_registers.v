@@ -817,7 +817,7 @@ module ibex_cs_registers (
 	ibex_csr #(
 		.Width(32),
 		.ShadowCopy(1'b0),
-		.ResetValue('0)
+		.ResetValue({32 {1'b0}})
 	) u_mepc_csr(
 		.clk_i(clk_i),
 		.rst_ni(rst_ni),
@@ -833,7 +833,7 @@ module ibex_cs_registers (
 	ibex_csr #(
 		.Width(18),
 		.ShadowCopy(1'b0),
-		.ResetValue('0)
+		.ResetValue({32 {1'b0}})
 	) u_mie_csr(
 		.clk_i(clk_i),
 		.rst_ni(rst_ni),
@@ -845,7 +845,7 @@ module ibex_cs_registers (
 	ibex_csr #(
 		.Width(32),
 		.ShadowCopy(1'b0),
-		.ResetValue('0)
+		.ResetValue({32 {1'b0}})
 	) u_mscratch_csr(
 		.clk_i(clk_i),
 		.rst_ni(rst_ni),
@@ -857,7 +857,7 @@ module ibex_cs_registers (
 	ibex_csr #(
 		.Width(6),
 		.ShadowCopy(1'b0),
-		.ResetValue('0)
+		.ResetValue({32 {1'b0}})
 	) u_mcause_csr(
 		.clk_i(clk_i),
 		.rst_ni(rst_ni),
@@ -869,7 +869,7 @@ module ibex_cs_registers (
 	ibex_csr #(
 		.Width(32),
 		.ShadowCopy(1'b0),
-		.ResetValue('0)
+		.ResetValue({32 {1'b0}})
 	) u_mtval_csr(
 		.clk_i(clk_i),
 		.rst_ni(rst_ni),
@@ -914,7 +914,7 @@ module ibex_cs_registers (
 	ibex_csr #(
 		.Width(32),
 		.ShadowCopy(1'b0),
-		.ResetValue('0)
+		.ResetValue({32 {1'b0}})
 	) u_depc_csr(
 		.clk_i(clk_i),
 		.rst_ni(rst_ni),
@@ -926,7 +926,7 @@ module ibex_cs_registers (
 	ibex_csr #(
 		.Width(32),
 		.ShadowCopy(1'b0),
-		.ResetValue('0)
+		.ResetValue({32 {1'b0}})
 	) u_dscratch0_csr(
 		.clk_i(clk_i),
 		.rst_ni(rst_ni),
@@ -938,7 +938,7 @@ module ibex_cs_registers (
 	ibex_csr #(
 		.Width(32),
 		.ShadowCopy(1'b0),
-		.ResetValue('0)
+		.ResetValue({32 {1'b0}})
 	) u_dscratch1_csr(
 		.clk_i(clk_i),
 		.rst_ni(rst_ni),
@@ -963,7 +963,7 @@ module ibex_cs_registers (
 	ibex_csr #(
 		.Width(32),
 		.ShadowCopy(1'b0),
-		.ResetValue('0)
+		.ResetValue({32 {1'b0}})
 	) u_mstack_epc_csr(
 		.clk_i(clk_i),
 		.rst_ni(rst_ni),
@@ -975,7 +975,7 @@ module ibex_cs_registers (
 	ibex_csr #(
 		.Width(6),
 		.ShadowCopy(1'b0),
-		.ResetValue('0)
+		.ResetValue({32 {1'b0}})
 	) u_mstack_cause_csr(
 		.clk_i(clk_i),
 		.rst_ni(rst_ni),
@@ -1037,7 +1037,7 @@ module ibex_cs_registers (
 				ibex_csr #(
 					.Width(6),
 					.ShadowCopy(ShadowCSR),
-					.ResetValue('0)
+					.ResetValue({32 {1'b0}})
 				) u_pmp_cfg_csr(
 					.clk_i(clk_i),
 					.rst_ni(rst_ni),
@@ -1055,7 +1055,7 @@ module ibex_cs_registers (
 				ibex_csr #(
 					.Width(PMPAddrWidth),
 					.ShadowCopy(ShadowCSR),
-					.ResetValue('0)
+					.ResetValue({32 {1'b0}})
 				) u_pmp_addr_csr(
 					.clk_i(clk_i),
 					.rst_ni(rst_ni),
@@ -1217,7 +1217,7 @@ module ibex_cs_registers (
 			ibex_csr #(
 				.Width(DbgHwNumLen),
 				.ShadowCopy(1'b0),
-				.ResetValue('0)
+				.ResetValue({32 {1'b0}})
 			) u_tselect_csr(
 				.clk_i(clk_i),
 				.rst_ni(rst_ni),
@@ -1230,7 +1230,7 @@ module ibex_cs_registers (
 				ibex_csr #(
 					.Width(1),
 					.ShadowCopy(1'b0),
-					.ResetValue('0)
+					.ResetValue({32 {1'b0}})
 				) u_tmatch_control_csr(
 					.clk_i(clk_i),
 					.rst_ni(rst_ni),
@@ -1242,7 +1242,7 @@ module ibex_cs_registers (
 				ibex_csr #(
 					.Width(32),
 					.ShadowCopy(1'b0),
-					.ResetValue('0)
+					.ResetValue({32 {1'b0}})
 				) u_tmatch_value_csr(
 					.clk_i(clk_i),
 					.rst_ni(rst_ni),
@@ -1318,7 +1318,7 @@ module ibex_cs_registers (
 	ibex_csr #(
 		.Width(6),
 		.ShadowCopy(ShadowCSR),
-		.ResetValue('0)
+		.ResetValue({32 {1'b0}})
 	) u_cpuctrl_csr(
 		.clk_i(clk_i),
 		.rst_ni(rst_ni),

@@ -90,6 +90,9 @@ module ibex_fetch_fifo (
 	always @(posedge clk_i)
 		if (instr_addr_en)
 			instr_addr_q <= instr_addr_d;
+		else
+			instr_addr_q <= instr_addr_q;
+			
 	assign out_addr_next_o = {instr_addr_next, 1'b0};
 	assign out_addr_o = {instr_addr_q, 1'b0};
 	assign unused_addr_in = in_addr_i[0];
@@ -127,9 +130,18 @@ module ibex_fetch_fifo (
 	generate
 		for (i = 0; i < DEPTH; i = i + 1) begin : g_fifo_regs
 			always @(posedge clk_i)
-				if (entry_en[i]) begin
-					rdata_q[i * 32+:32] <= rdata_d[i * 32+:32];
-					err_q[i] <= err_d[i];
+				if (!rst_ni) begin
+					rdata_q[i * 32+:32] <=0;
+					err_q[i] <= 0;
+				end else begin
+					if (entry_en[i]) begin
+						rdata_q[i * 32+:32] <= rdata_d[i * 32+:32];
+						err_q[i] <= err_d[i];
+					end
+					else begin
+						rdata_q[i * 32+:32] <= rdata_q[i * 32+:32];
+						err_q[i] <= err_q[i];
+					end
 				end
 		end
 	endgenerate
