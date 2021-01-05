@@ -129,7 +129,7 @@ module ibex_fetch_fifo (
 			valid_q <= valid_d;
 	generate
 		for (i = 0; i < DEPTH; i = i + 1) begin : g_fifo_regs
-			always @(posedge clk_i)
+			always @(posedge clk_i or negedge rst_ni)
 				if (!rst_ni) begin
 					rdata_q[i * 32+:32] <=0;
 					err_q[i] <= 0;
