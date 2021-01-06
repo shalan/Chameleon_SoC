@@ -43,8 +43,34 @@ set ::env(MAGIC_WRITE_FULL_LEF) 0
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 
 set ::env(VERILOG_FILES) "\
-    $script_dir/../../verilog/rtl/ibex/*.v"
+   $script_dir/../../verilog/rtl/ibex/ibex_core.v
+   $script_dir/../../verilog/rtl/ibex/ibex_pmp.v
+   $script_dir/../../verilog/rtl/ibex/ibex_controller.v
+   $script_dir/../../verilog/rtl/ibex/ibex_decoder.v
+   $script_dir/../../verilog/rtl/ibex/ibex_id_stage.v
+   $script_dir/../../verilog/rtl/ibex/ibex_wb_stage.v
+   $script_dir/../../verilog/rtl/ibex/ibex_ex_block.v
+   $script_dir/../../verilog/rtl/ibex/ibex_branch_predict.v
+   $script_dir/../../verilog/rtl/ibex/ibex_icache.v
+   $script_dir/../../verilog/rtl/ibex/ibex_compressed_decoder.v
+   $script_dir/../../verilog/rtl/ibex/ibex_prefetch_buffer.v
+   $script_dir/../../verilog/rtl/ibex/ibex_if_stage.v
+   $script_dir/../../verilog/rtl/ibex/ibex_register_file_latch.v
+   $script_dir/../../verilog/rtl/ibex/ibex_cs_registers.v
+   $script_dir/../../verilog/rtl/ibex/ibex_csr.v
+   $script_dir/../../verilog/rtl/ibex/ibex_register_file_ff.v
+   $script_dir/../../verilog/rtl/ibex/ibex_load_store_unit.v
+   $script_dir/../../verilog/rtl/ibex/ibex_alu.v
+   $script_dir/../../verilog/rtl/ibex/ibex_counter.v
+   $script_dir/../../verilog/rtl/ibex/ibex_dummy_instr.v
+   $script_dir/../../verilog/rtl/ibex/ibex_multdiv_fast.v
+   $script_dir/../../verilog/rtl/ibex/ibex_multdiv_slow.v
+   $script_dir/../../verilog/rtl/ibex/prim_clock_gating.v 
+   $script_dir/../../verilog/rtl/ibex/ibex_fetch_fifo.v
+   $script_dir/../../verilog/rtl/ibex/ibex_wrapper.v"
 
+#set ::env(VERILOG_FILES_BLACKBOX) "$script_dir/../../verilog/rtl/ibex/ibex_fetch_fifo.v"
+    
 set ::env(GLB_RT_MAXLAYER) 5
 set ::env(GLB_RT_ADJUSTMENT) 0.25
 
