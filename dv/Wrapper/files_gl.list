@@ -1,0 +1,17 @@
++define+USE_POWER_PINS=1
++define+FUNCTIONAL=1
++define+UNIT_DELAY=#1
+/home/cse-p07-2179-gaa/work/openlane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
+/home/cse-p07-2179-gaa/work/openlane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
+
++define+MPRJ_IO_PADS=38
+
+../../verilog/gl/DFFRAM_4K.v
+../../verilog/gl/DMC_32x16HC.v
+../../verilog/gl/apb_sys_0.v
+../../verilog/gl/ibex_wrapper.v
+../../verilog/gl/user_project_wrapper.v
+
+Ibex_Wrapper_TB.v
+../sst26wf080b.v
+../23LC512.v 

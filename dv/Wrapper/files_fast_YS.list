@@ -1,5 +1,9 @@
-../pdk/hd_primitives.v 
-../pdk/hd_functional.v
++define+FUNCTIONAL=1
++define+UNIT_DELAY=#1
+/home/cse-p07-2179-gaa/work/openlane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
+/home/cse-p07-2179-gaa/work/openlane/pdks/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
+
+../verilog/YS/ibex_wrapper.synthesis.v
 
 ../dv/DFFRAM_beh.v
 
@@ -25,17 +29,17 @@
 ../verilog/rtl/IPs/APB_SPI.v
 ../verilog/rtl/IPs/APB_I2C.v
 ../verilog/rtl/IPs/AHBSRAM.v
-../verilog/rtl/IPs/DFFRAM.v
+../verilog/rtl/IPs/DFFRAM_4K.v
 ../verilog/rtl/IPs/DFFRAMBB.v
 ../verilog/rtl/acc/AHB_SPM.v
-#+define+NO_HC_CACHE=1
++define+NO_HC_CACHE=1
 ../verilog/rtl/IPs/QSPI_XIP_CTRL.v
 ../verilog/rtl/IPs/DMC_32x16HC.v
-#+define+NO_DFFRAM=1
++define+NO_DFFRAM=1
 #../verilog/rtl/IPs/RAM_4Kx32.v
 ../verilog/rtl/IPs/RAM_3Kx32.v
 
-../verilog/rtl/ibex/ibex_wrapper.v
+
 ../verilog/rtl/ibex/ibex_alu.v
 ../verilog/rtl/ibex/ibex_branch_predict.v
 ../verilog/rtl/ibex/ibex_compressed_decoder.v

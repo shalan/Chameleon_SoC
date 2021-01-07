@@ -1,6 +1,6 @@
 `timescale 1ns/1ns
 
-`define   TEST_FILE   "../sw/test.hex" 
+`define   TEST_FILE   "../../sw/test.hex" 
 `define   SIM_TIME    800_000
 `define   SIM_LEVEL   0
 
@@ -66,6 +66,10 @@ module IBEX_SoC_TB;
     );
 
     soc_core MUV (
+    `ifdef USE_POWER_PINS
+    	.VPWR(1'b1),
+    	.VGND(1'b0),
+    `endif
         .HCLK(HCLK),
         .HRESETn(HRESETn),
 
