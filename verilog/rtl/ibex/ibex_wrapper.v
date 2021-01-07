@@ -1,5 +1,9 @@
 module ibex_wrapper
   (
+ `ifdef USE_POWER_PINS
+	input VPWR,
+	input VGND,
+`endif
     input  wire         HCLK,							// System clock
     input  wire         HRESETn,						// System Reset, active low
 

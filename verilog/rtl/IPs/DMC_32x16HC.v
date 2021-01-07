@@ -150,6 +150,10 @@ module OVERHEAD(
 endmodule
 
 module DMC_32x16HC (
+`ifdef USE_POWER_PINS
+    input VPWR,
+    input VGND,
+`endif
     input wire          clk,
     input wire          rst_n,
     // 

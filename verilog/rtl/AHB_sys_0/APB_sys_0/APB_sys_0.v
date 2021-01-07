@@ -1,6 +1,10 @@
 
 `timescale 1ns/1ns
 module apb_sys_0(
+`ifdef USE_POWER_PINS
+    input VPWR,
+    input VGND,
+`endif
     // Global signals 
     input wire          HCLK,
     input wire          HRESETn,
