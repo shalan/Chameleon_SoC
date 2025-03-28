@@ -1,5 +1,5 @@
 # Chameleon SoC (IBEX)
-AHB-Lite based SoC for IBEX
+AHB-Lite based SoC for IBEX/VEXRISC/SWERV. It was taped-out for OpenMPW-1.
 
 ## The Memory Map
 <img src="./docs/soc_mem_map.png" size="50%">
